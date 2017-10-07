@@ -1,0 +1,18 @@
+{
+    "name": "fefas/totp",
+    "description": "Command line interface for time-based one-time passwords",
+
+    "type": "project",
+    "license": "MIT",
+
+    "authors": [
+        {
+            "name": "Felipe Martins",
+            "email": "me@fefas.net"
+        }
+    ],
+
+    "minimum-stability": "stable",
+
+    "require": {}
+}
