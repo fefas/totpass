@@ -14,5 +14,10 @@
 
     "minimum-stability": "stable",
 
-    "require": {}
+    "require": {
+    },
+
+    "require-dev": {
+        "behat/behat": "^3.4"
+    }
 }
