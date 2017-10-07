@@ -18,6 +18,13 @@
     },
 
     "require-dev": {
-        "behat/behat": "^3.4"
+        "behat/behat": "^3.4",
+        "phpunit/phpunit": "^6.4"
+    },
+
+    "autoload-dev": {
+        "files": [
+            "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
+        ]
     }
 }
