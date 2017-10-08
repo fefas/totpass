@@ -4,7 +4,7 @@ Feature: List time-based one-time passwords
   I want to list them by typing "totpass list [prefix-filter] [--reveal-secret]"
 
   Scenario: List when none was registered
-    When I run the command "totpass list"
+    When I run the command "totpass show"
     Then the exit status should be "0"
     And the following output should be seen:
       """
@@ -16,11 +16,16 @@ Feature: List time-based one-time passwords
       | TOT Password | Created At          |
       | dropbox      | 2016-03-14 10:12:53 |
       | google.fefas | 2016-09-22 23:07:22 |
-    When I run the command "totpass list"
+    When I run the command "totpass show"
     Then the exit status should be "0"
     And the following output should be seen:
       """
-      Password       Created At
-      dropbox        2016-03-14 10:12:53
-      google.fefas   2016-09-22 23:07:22
+      +-----------------+---------------------+
+      | Time-Based One-Time Passwords         |
+      +-----------------+---------------------+
+      | Name            | Created at          |
+      +-----------------+---------------------+
+      | dropbox         | 2016-03-14 10:12:53 |
+      | google.fefas    | 2016-09-22 23:07:22 |
+      +-----------------+---------------------+
       """

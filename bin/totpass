@@ -3,23 +3,15 @@
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+use Symfony\Component\Console\Application;
+use Fefas\TotPass\Infrastructure\Commands\ShowCommand;
 use Fefas\TotPass\TotPassword\Infrastructure\PdoTotPasswordRepository;
 
-$pdoDatabaseConnection = new PDO('sqlite:totpass.sqlite');
+$application = new Application();
 
+$pdoDatabaseConnection = new PDO('sqlite:totpass.sqlite');
 $totPasswordsRepository = new PdoTotPasswordRepository($pdoDatabaseConnection);
 
-$totPasswords = $totPasswordsRepository->findAll();
+$application->add(new ShowCommand($totPasswordsRepository));
 
-if (0 === count($totPasswords)) {
-    echo 'Nothing to show..';
-}
-else {
-    echo "Password\tCreated At\n";
-    foreach ($totPasswords as $totPassword) {
-        $name = $totPassword->name();
-        $createdAt = $totPassword->createdAt()->format('Y-m-d H:i:s');
-
-        echo "$name\t$createdAt\n";
-    }
-}
+$application->run();
