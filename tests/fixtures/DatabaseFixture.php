@@ -1,6 +1,6 @@
 <?php
 
-namespace Fefas\Totp;
+namespace Fefas\TotPass;
 
 use PDO;
 
@@ -15,19 +15,19 @@ class DatabaseFixture
 
     public function purgeDatabase()
     {
-        $this->pdoDatabaseConnection->exec('DELETE FROM totp_password');
+        $this->pdoDatabaseConnection->exec('DELETE FROM tot_password');
     }
 
-    public function insertTotpPasswords(array $totpPasswords)
+    public function insertTotPasswords(array $totPasswords)
     {
         $pdoStatement = $this->pdoDatabaseConnection->prepare('
-            INSERT INTO totp_password (name, created_at) VALUES (:name, :createdAt)
+            INSERT INTO tot_password (name, created_at) VALUES (:name, :createdAt)
         ');
 
-        foreach ($totpPasswords as $totpPassword) {
+        foreach ($totPasswords as $totPassword) {
             $pdoStatement->execute([
-                'name' => $totpPassword->name(),
-                'createdAt' => $totpPassword->createdAt()->format('Y-m-d H:i:s'),
+                'name' => $totPassword->name(),
+                'createdAt' => $totPassword->createdAt()->format('Y-m-d H:i:s'),
             ]);
         }
     }

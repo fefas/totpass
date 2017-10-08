@@ -3,11 +3,11 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class CreateTableTotpPassword extends AbstractMigration
+class CreateTableTotPassword extends AbstractMigration
 {
     public function change()
     {
-        $table = $this->table('totp_password', [
+        $table = $this->table('tot_password', [
             'id' => false,
             'primary_key' => 'name',
         ]);

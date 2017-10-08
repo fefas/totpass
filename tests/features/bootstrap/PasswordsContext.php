@@ -2,8 +2,8 @@
 
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
-use Fefas\Totp\DatabaseFixture;
-use Fefas\Totp\TotpPassword\Model\TotpPassword;
+use Fefas\TotPass\DatabaseFixture;
+use Fefas\TotPass\TotPassword\Model\TotPassword;
 
 class PasswordsContext implements Context
 {
@@ -11,7 +11,7 @@ class PasswordsContext implements Context
 
     public function __construct()
     {
-        $pdoDatabaseConnection = new PDO('sqlite:totp.sqlite');
+        $pdoDatabaseConnection = new PDO('sqlite:totpass.sqlite');
 
         $this->databaseFixture = new DatabaseFixture($pdoDatabaseConnection);
     }
@@ -33,26 +33,26 @@ class PasswordsContext implements Context
     }
 
     /**
-     * @Transform table:Password,Created At
+     * @Transform table:TOT Password,Created At
      */
-    public function transformTotpPasswords(TableNode $totpPasswordsTable)
+    public function transformTotps(TableNode $totPasswordsTable)
     {
-        $totpPasswords = [];
-        foreach ($totpPasswordsTable as $totpPasswordRow) {
-            $totpPasswordName = $totpPasswordRow['Password'];
-            $totpPasswordCreatedAt = new DateTime($totpPasswordRow['Created At']);
+        $totPasswords = [];
+        foreach ($totPasswordsTable as $totPasswordRow) {
+            $totPasswordName = $totPasswordRow['TOT Password'];
+            $totPasswordCreatedAt = new DateTime($totPasswordRow['Created At']);
 
-            $totpPasswords[] = new TotpPassword($totpPasswordName, $totpPasswordCreatedAt);
+            $totPasswords[] = new TotPassword($totPasswordName, $totPasswordCreatedAt);
         }
 
-        return $totpPasswords;
+        return $totPasswords;
     }
 
     /**
      * @Given the following time-based one-time passwords were registered:
      */
-    public function theFollowingTimeBasedOneTimePasswordsWereRegistered(array $totpPasswords)
+    public function theFollowingTotPasswordsWereRegistered(array $totPasswords)
     {
-        $this->databaseFixture->insertTotpPasswords($totpPasswords);
+        $this->databaseFixture->insertTotPasswords($totPasswords);
     }
 }

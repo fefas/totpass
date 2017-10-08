@@ -11,7 +11,7 @@ return [
 
         'production' => [
             'adapter' => 'sqlite',
-            'name' => __DIR__.'/totp.sqlite',
+            'name' => __DIR__.'/totpass.sqlite',
             'charset' => 'utf8',
         ],
     ],

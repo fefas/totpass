@@ -1,10 +1,10 @@
 <?php
 
-namespace Fefas\Totp\TotpPassword\Model;
+namespace Fefas\TotPass\TotPassword\Model;
 
 use DateTime;
 
-class TotpPassword
+class TotPassword
 {
     private $name;
     private $createdAt;

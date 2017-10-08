@@ -1,5 +1,5 @@
 {
-    "name": "fefas/totp",
+    "name": "fefas/totpass",
     "description": "Command line interface for time-based one-time passwords",
 
     "type": "project",
@@ -20,7 +20,7 @@
 
     "autoload": {
         "psr-4": {
-            "Fefas\\Totp\\": "src/"
+            "Fefas\\TotPass\\": "src/"
         }
     },
 
@@ -31,7 +31,7 @@
 
     "autoload-dev": {
         "psr-4": {
-            "Fefas\\Totp\\": "tests/fixtures/"
+            "Fefas\\TotPass\\": "tests/fixtures/"
         },
         "files": [
             "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
