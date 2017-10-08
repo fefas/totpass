@@ -18,6 +18,12 @@
         "robmorgan/phinx": "^0.9.1"
     },
 
+    "autoload": {
+        "psr-4": {
+            "Fefas\\Totp\\": "src/"
+        }
+    },
+
     "require-dev": {
         "behat/behat": "^3.4",
         "phpunit/phpunit": "^6.4"
