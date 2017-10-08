@@ -1,4 +1,25 @@
 #!/usr/bin/env php
 <?php
 
-echo 'Nothing to show..';
+require_once __DIR__.'/../vendor/autoload.php';
+
+use Fefas\Totp\TotpPassword\Infrastructure\PdoTotpPasswordRepository;
+
+$pdoDatabaseConnection = new PDO('sqlite:totp.sqlite');
+
+$totpPasswordsRepository = new PdoTotpPasswordRepository($pdoDatabaseConnection);
+
+$totpPasswords = $totpPasswordsRepository->findAll();
+
+if (0 === count($totpPasswords)) {
+    echo 'Nothing to show..';
+}
+else {
+    echo "Password\tCreated At\n";
+    foreach ($totpPasswords as $totpPassword) {
+        $name = $totpPassword->name();
+        $createdAt = $totpPassword->createdAt()->format('Y-m-d H:i:s');
+
+        echo "$name\t$createdAt\n";
+    }
+}

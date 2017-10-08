@@ -43,6 +43,13 @@ class CliContext implements Context
     {
         $expectedOutput = $expectedOutput->getStrings();
 
+        foreach ($expectedOutput as $i => $line) {
+            $expectedOutput[$i] = preg_replace('/\s+/', ' ', $line);
+        }
+        foreach ($this->output as $i => $line) {
+            $this->output[$i] = preg_replace('/\s+/', ' ', $line);
+        }
+
         assertEquals($expectedOutput, $this->output);
     }
 }
