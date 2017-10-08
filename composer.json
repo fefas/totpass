@@ -24,6 +24,9 @@
     },
 
     "autoload-dev": {
+        "psr-4": {
+            "Fefas\\Totp\\": "tests/fixtures/"
+        },
         "files": [
             "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
         ]
