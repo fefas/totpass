@@ -29,10 +29,25 @@ class PdoTotPasswordRepository implements TotPasswordRepository
         foreach ($totPasswordsRows as $totPasswordRow) {
             $totPasswords[] = new TotPassword(
                 $totPasswordRow['name'],
+                $totPasswordRow['secret'],
                 new DateTime($totPasswordRow['registered_at'])
             );
         }
 
         return $totPasswords;
+    }
+
+    public function register(TotPassword $totPassword): void
+    {
+        $pdoStatement = $this->pdoDatabaseConnection->prepare('
+            INSERT INTO tot_password (name, secret, registered_at) VALUES
+                (:name, :secret, :registeredAt)
+        ');
+
+        $pdoStatement->execute([
+            'name' => $totPassword->name(),
+            'secret' => $totPassword->secret(),
+            'registeredAt' => $totPassword->registeredAt()->format('Y-m-d H:i:s'),
+        ]);
     }
 }
