@@ -24,12 +24,8 @@ class ShowCommand extends Command
     {
         $this
             ->setName('show')
-            ->setDescription('Show registered time-based one-time passwords.')
-            ->setHelp(<<<HELP
-This command allows you to list and filter the registered time-based one-time
-passwords.
-HELP
-            );
+            ->setDescription('Show registered time-based one-time passwords')
+            ->setHelp('This command allows you to list and filter the registered time-based one-time passwords.');
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
