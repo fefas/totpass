@@ -5,7 +5,7 @@ use Behat\Gherkin\Node\TableNode;
 use Fefas\TotPass\DatabaseFixture;
 use Fefas\TotPass\TotPassword\Model\TotPassword;
 
-class PasswordsContext implements Context
+class TotPasswordContext implements Context
 {
     private $databaseFixture;
 

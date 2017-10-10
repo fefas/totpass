@@ -8,4 +8,4 @@ default:
             contexts:
                 - CliContext:
                     workDir: %paths.base%/bin
-                - PasswordsContext
+                - TotPasswordContext
