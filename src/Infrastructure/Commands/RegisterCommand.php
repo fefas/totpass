@@ -48,6 +48,5 @@ class RegisterCommand extends Command
         $this->totPasswordRepository->register($totPassword);
 
         $output->writeln("<info>The new TOT password with name '$totPasswordName' was successfully registered.</info>");
-        return;
     }
 }
