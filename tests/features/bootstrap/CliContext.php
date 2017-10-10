@@ -22,7 +22,7 @@ class CliContext implements Context
         $output = [];
         $exitStatus = null;
 
-        exec("{$this->workDir}/$command", $output, $exitStatus);
+        exec("{$this->workDir}/$command 2>&1", $output, $exitStatus);
 
         $this->output = $output;
         $this->exitStatus = $exitStatus;
