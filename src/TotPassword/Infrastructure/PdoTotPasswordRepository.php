@@ -23,7 +23,6 @@ class PdoTotPasswordRepository implements TotPasswordRepository
         ');
 
         $pdoStatement->execute();
-
         $totPasswordsRows = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
         $totPasswords = [];
