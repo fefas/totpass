@@ -33,16 +33,18 @@ class PasswordsContext implements Context
     }
 
     /**
-     * @Transform table:TOT Password,Registered At
+     * @Transform table:TOT Password,Secret
+     * @Transform table:TOT Password,Secret,Registered at
      */
     public function transformTotps(TableNode $totPasswordsTable)
     {
         $totPasswords = [];
         foreach ($totPasswordsTable as $totPasswordRow) {
             $name = $totPasswordRow['TOT Password'];
-            $registeredAt = new DateTime($totPasswordRow['Registered At'] ?? null);
+            $secret = $totPasswordRow['Secret'];
+            $registeredAt = new DateTime($totPasswordRow['Registered at'] ?? null);
 
-            $totPasswords[] = new TotPassword($name, $registeredAt);
+            $totPasswords[] = new TotPassword($name, $secret, $registeredAt);
         }
 
         return $totPasswords;
@@ -54,5 +56,21 @@ class PasswordsContext implements Context
     public function theFollowingTotPasswordsWereRegistered(array $totPasswords)
     {
         $this->databaseFixture->insertTotPasswords($totPasswords);
+    }
+
+    /**
+     * @Then the following time-based one-time passwords should be registered:
+     */
+    public function theFollowingTotPasswordsShouldBeRegistered(
+        array $expectedTotPasswords
+    ) {
+        foreach ($expectedTotPasswords as $expectedTotPassword) {
+            $registeredTotPassword = $this->databaseFixture->retrieveTotPasswordByName(
+                $expectedTotPassword->name()
+            );
+
+            assertEquals($expectedTotPassword->name(), $registeredTotPassword->name());
+            assertEquals($expectedTotPassword->secret(), $registeredTotPassword->secret());
+        }
     }
 }
