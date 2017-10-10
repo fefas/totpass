@@ -55,6 +55,7 @@ class DatabaseFixture
         return new TotPassword(
             $totPasswordRow['name'],
             $totPasswordRow['secret'],
+            $totPasswordRow['refresh_period'],
             new DateTime($totPasswordRow['registered_at'])
         );
     }

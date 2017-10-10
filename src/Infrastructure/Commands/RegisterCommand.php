@@ -6,6 +6,7 @@ use DateTime;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Fefas\TotPass\TotPassword\Model\TotPassword;
 use Fefas\TotPass\TotPassword\Model\TotPasswordRepository;
@@ -31,17 +32,28 @@ class RegisterCommand extends Command
         $this
             ->addArgument('name', InputArgument::REQUIRED, 'Name used to identify the register')
             ->addArgument('secret', InputArgument::REQUIRED, 'Secret to generate the TOTP');
+
+        $this
+            ->addOption(
+                'refresh-period',
+                null,
+                InputOption::VALUE_OPTIONAL,
+                'Password refresh period',
+                30
+            );
     }
 
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $totPasswordName = $input->getArgument('name');
         $totPasswordSecret = $input->getArgument('secret');
+        $totPasswordRefreshPeriod = $input->getOption('refresh-period');
         $totPasswordRegisteredAt = new DateTime();
 
         $totPassword = new TotPassword(
             $totPasswordName,
             $totPasswordSecret,
+            $totPasswordRefreshPeriod,
             $totPasswordRegisteredAt
         );
 

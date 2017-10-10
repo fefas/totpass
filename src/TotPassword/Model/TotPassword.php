@@ -8,12 +8,18 @@ class TotPassword
 {
     private $name;
     private $secret;
+    private $refreshPeriod;
     private $registeredAt;
 
-    public function __construct(string $name, string $secret, DateTime $registeredAt)
-    {
+    public function __construct(
+        string $name,
+        string $secret,
+        int $refreshPeriod,
+        DateTime $registeredAt
+    ) {
         $this->name = $name;
         $this->secret = $secret;
+        $this->refreshPeriod = $refreshPeriod;
         $this->registeredAt = $registeredAt;
     }
 
@@ -25,6 +31,11 @@ class TotPassword
     public function secret(): string
     {
         return $this->secret;
+    }
+
+    public function refreshPeriod(): int
+    {
+        return $this->refreshPeriod;
     }
 
     public function registeredAt(): DateTime
