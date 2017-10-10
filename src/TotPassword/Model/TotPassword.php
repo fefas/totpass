@@ -7,12 +7,12 @@ use DateTime;
 class TotPassword
 {
     private $name;
-    private $createdAt;
+    private $registeredAt;
 
-    public function __construct(string $name, DateTime $createdAt)
+    public function __construct(string $name, DateTime $registeredAt)
     {
         $this->name = $name;
-        $this->createdAt = $createdAt;
+        $this->registeredAt = $registeredAt;
     }
 
     public function name(): string
@@ -20,8 +20,8 @@ class TotPassword
         return $this->name;
     }
 
-    public function createdAt(): DateTime
+    public function registeredAt(): DateTime
     {
-        return $this->createdAt;
+        return $this->registeredAt;
     }
 }

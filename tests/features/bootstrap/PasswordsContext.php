@@ -33,16 +33,16 @@ class PasswordsContext implements Context
     }
 
     /**
-     * @Transform table:TOT Password,Created At
+     * @Transform table:TOT Password,Registered At
      */
     public function transformTotps(TableNode $totPasswordsTable)
     {
         $totPasswords = [];
         foreach ($totPasswordsTable as $totPasswordRow) {
-            $totPasswordName = $totPasswordRow['TOT Password'];
-            $totPasswordCreatedAt = new DateTime($totPasswordRow['Created At']);
+            $name = $totPasswordRow['TOT Password'];
+            $registeredAt = new DateTime($totPasswordRow['Registered At'] ?? null);
 
-            $totPasswords[] = new TotPassword($totPasswordName, $totPasswordCreatedAt);
+            $totPasswords[] = new TotPassword($name, $registeredAt);
         }
 
         return $totPasswords;

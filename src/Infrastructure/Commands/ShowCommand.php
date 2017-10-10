@@ -50,7 +50,7 @@ HELP
         foreach ($totPasswords as $totPassword) {
             $outputTableRows[] = [
                 $totPassword->name(),
-                $totPassword->createdAt()->format('Y-m-d H:i:s'),
+                $totPassword->registeredAt()->format('Y-m-d H:i:s'),
             ];
         }
 
@@ -58,7 +58,7 @@ HELP
         $outputTable
             ->setHeaders([
                 [new TableCell('Time-Based One-Time Passwords', ['colspan' => 2])],
-                ['Name', 'Created at'],
+                ['Name', 'Registered at'],
             ])
             ->setRows($outputTableRows)
             ->render();

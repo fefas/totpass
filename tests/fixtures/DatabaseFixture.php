@@ -21,13 +21,14 @@ class DatabaseFixture
     public function insertTotPasswords(array $totPasswords)
     {
         $pdoStatement = $this->pdoDatabaseConnection->prepare('
-            INSERT INTO tot_password (name, created_at) VALUES (:name, :createdAt)
+            INSERT INTO tot_password (name, registered_at) VALUES
+                (:name, :registeredAt)
         ');
 
         foreach ($totPasswords as $totPassword) {
             $pdoStatement->execute([
                 'name' => $totPassword->name(),
-                'createdAt' => $totPassword->createdAt()->format('Y-m-d H:i:s'),
+                'registeredAt' => $totPassword->registeredAt()->format('Y-m-d H:i:s'),
             ]);
         }
     }

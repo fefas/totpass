@@ -13,7 +13,7 @@ class CreateTableTotPassword extends AbstractMigration
         ]);
 
         $table->addColumn('name', 'string')
-              ->addColumn('created_at', 'datetime')
+              ->addColumn('registered_at', 'datetime')
               ->create();
     }
 }

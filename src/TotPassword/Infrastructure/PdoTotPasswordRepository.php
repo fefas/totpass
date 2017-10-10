@@ -29,7 +29,7 @@ class PdoTotPasswordRepository implements TotPasswordRepository
         foreach ($totPasswordsRows as $totPasswordRow) {
             $totPasswords[] = new TotPassword(
                 $totPasswordRow['name'],
-                new DateTime($totPasswordRow['created_at'])
+                new DateTime($totPasswordRow['registered_at'])
             );
         }
 
