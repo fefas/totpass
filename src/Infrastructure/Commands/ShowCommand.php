@@ -46,15 +46,14 @@ class ShowCommand extends Command
         foreach ($totPasswords as $totPassword) {
             $outputTableRows[] = [
                 $totPassword->name(),
-                $totPassword->registeredAt()->format('Y-m-d H:i:s'),
             ];
         }
 
         $outputTable = new Table($output);
         $outputTable
             ->setHeaders([
-                [new TableCell('Time-Based One-Time Passwords', ['colspan' => 2])],
-                ['Name', 'Registered at'],
+                [new TableCell('Time-Based One-Time Passwords', ['colspan' => 1])],
+                ['Name'],
             ])
             ->setRows($outputTableRows)
             ->render();

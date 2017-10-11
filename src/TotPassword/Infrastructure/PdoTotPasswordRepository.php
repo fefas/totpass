@@ -30,7 +30,7 @@ class PdoTotPasswordRepository implements TotPasswordRepository
             $totPasswords[] = new TotPassword(
                 $totPasswordRow['name'],
                 $totPasswordRow['secret'],
-                new DateTime($totPasswordRow['registered_at'])
+                $totPasswordRow['refresh_period']
             );
         }
 
@@ -40,15 +40,14 @@ class PdoTotPasswordRepository implements TotPasswordRepository
     public function register(TotPassword $totPassword): void
     {
         $pdoStatement = $this->pdoDatabaseConnection->prepare('
-            INSERT INTO tot_password (name, secret, refresh_period, registered_at)
-                VALUES (:name, :secret, :refreshPeriod, :registeredAt)
+            INSERT INTO tot_password (name, secret, refresh_period)
+                VALUES (:name, :secret, :refreshPeriod)
         ');
 
         $pdoStatement->execute([
             'name' => $totPassword->name(),
             'secret' => $totPassword->secret(),
-            'refreshPeriod' => $totPassword->refreshPeriod(),
-            'registeredAt' => $totPassword->registeredAt()->format('Y-m-d H:i:s'),
+            'refreshPeriod' => $totPassword->refreshPeriod()
         ]);
     }
 }

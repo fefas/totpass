@@ -48,13 +48,11 @@ class RegisterCommand extends Command
         $totPasswordName = $input->getArgument('name');
         $totPasswordSecret = $input->getArgument('secret');
         $totPasswordRefreshPeriod = $input->getOption('refresh-period');
-        $totPasswordRegisteredAt = new DateTime();
 
         $totPassword = new TotPassword(
             $totPasswordName,
             $totPasswordSecret,
-            $totPasswordRefreshPeriod,
-            $totPasswordRegisteredAt
+            $totPasswordRefreshPeriod
         );
 
         $this->totPasswordRepository->register($totPassword);

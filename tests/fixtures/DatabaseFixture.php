@@ -23,15 +23,15 @@ class DatabaseFixture
     public function insertTotPasswords(array $totPasswords)
     {
         $pdoStatement = $this->pdoDatabaseConnection->prepare('
-            INSERT INTO tot_password (name, secret, registered_at) VALUES
-                (:name, :secret, :registeredAt)
+            INSERT INTO tot_password (name, secret, refresh_period) VALUES
+                (:name, :secret, :refreshPeriod)
         ');
 
         foreach ($totPasswords as $totPassword) {
             $pdoStatement->execute([
                 'name' => $totPassword->name(),
                 'secret' => $totPassword->secret(),
-                'registeredAt' => $totPassword->registeredAt()->format('Y-m-d H:i:s'),
+                'refreshPeriod' => $totPassword->refreshPeriod(),
             ]);
         }
     }
@@ -55,8 +55,7 @@ class DatabaseFixture
         return new TotPassword(
             $totPasswordRow['name'],
             $totPasswordRow['secret'],
-            $totPasswordRow['refresh_period'],
-            new DateTime($totPasswordRow['registered_at'])
+            $totPasswordRow['refresh_period']
         );
     }
 }

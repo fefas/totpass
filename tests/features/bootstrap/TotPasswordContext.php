@@ -34,7 +34,6 @@ class TotPasswordContext implements Context
 
     /**
      * @Transform table:TOT Password,Secret,Refresh Period
-     * @Transform table:TOT Password,Secret,Refresh Period,Registered at
      */
     public function transformTotps(TableNode $totPasswordsTable)
     {
@@ -43,14 +42,8 @@ class TotPasswordContext implements Context
             $name = $totPasswordRow['TOT Password'];
             $secret = $totPasswordRow['Secret'];
             $refreshPeriod = $totPasswordRow['Refresh Period'];
-            $registeredAt = new DateTime($totPasswordRow['Registered at'] ?? null);
 
-            $totPasswords[] = new TotPassword(
-                $name,
-                $secret,
-                $refreshPeriod,
-                $registeredAt
-            );
+            $totPasswords[] = new TotPassword($name, $secret, $refreshPeriod);
         }
 
         return $totPasswords;
@@ -75,10 +68,7 @@ class TotPasswordContext implements Context
                 $expectedTotPassword->name()
             );
 
-            assertTrue(null !== $registeredTotPassword);
-            assertEquals($expectedTotPassword->name(), $registeredTotPassword->name());
-            assertEquals($expectedTotPassword->secret(), $registeredTotPassword->secret());
-            assertEquals($expectedTotPassword->refreshPeriod(), $registeredTotPassword->refreshPeriod());
+            assertEquals($expectedTotPassword, $registeredTotPassword);
         }
     }
 }

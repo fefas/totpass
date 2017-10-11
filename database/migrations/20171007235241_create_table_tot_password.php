@@ -15,7 +15,6 @@ class CreateTableTotPassword extends AbstractMigration
         $table->addColumn('name', 'string')
               ->addColumn('secret', 'string')
               ->addColumn('refresh_period', 'integer')
-              ->addColumn('registered_at', 'datetime')
               ->create();
     }
 }
