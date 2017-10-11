@@ -5,7 +5,7 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 use Fefas\TotPass\TotPassword\Infrastructure\PdoTotPasswordRepository;
-use Fefas\TotPass\Infrastructure\Commands\ShowCommand;
+use Fefas\TotPass\Infrastructure\Commands\RevealCommand;
 use Fefas\TotPass\Infrastructure\Commands\RegisterCommand;
 
 $application = new Application();
@@ -13,7 +13,7 @@ $application = new Application();
 $pdoDatabaseConnection = new PDO('sqlite:totpass.sqlite');
 $totPasswordsRepository = new PdoTotPasswordRepository($pdoDatabaseConnection);
 
-$application->add(new ShowCommand($totPasswordsRepository));
+$application->add(new RevealCommand($totPasswordsRepository));
 $application->add(new RegisterCommand($totPasswordsRepository));
 
 $application->run();

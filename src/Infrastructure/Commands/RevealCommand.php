@@ -9,7 +9,7 @@ use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableCell;
 use Fefas\TotPass\TotPassword\Model\TotPasswordRepository;
 
-class ShowCommand extends Command
+class RevealCommand extends Command
 {
     private $totPasswordRepository;
 
@@ -23,8 +23,8 @@ class ShowCommand extends Command
     public function configure()
     {
         $this
-            ->setName('show')
-            ->setDescription('Show registered time-based one-time passwords')
+            ->setName('reveal')
+            ->setDescription('Reveal registered time-based one-time passwords')
             ->setHelp('This command allows you to list and filter the registered time-based one-time passwords.');
     }
 
