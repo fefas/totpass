@@ -1,3 +1,4 @@
+@register
 Feature: Register new time-based one-time password
   In order to register a new time-based one-time password
   As an user
