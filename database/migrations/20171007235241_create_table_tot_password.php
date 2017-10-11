@@ -12,9 +12,10 @@ class CreateTableTotPassword extends AbstractMigration
             'primary_key' => 'name',
         ]);
 
-        $table->addColumn('name', 'string')
-              ->addColumn('secret', 'string')
-              ->addColumn('refresh_period', 'integer')
-              ->create();
+        $table
+            ->addColumn('name', 'string')
+            ->addColumn('secret', 'string')
+            ->addColumn('refresh_period', 'integer')
+            ->create();
     }
 }
