@@ -5,6 +5,7 @@ php:
 
 install:
     - composer install
+    - composer database:migrate
 
 script:
     - composer run test:integration

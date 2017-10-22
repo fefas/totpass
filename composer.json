@@ -21,6 +21,7 @@
     "minimum-stability": "stable",
 
     "scripts": {
+        "database:migrate": "phinx migrate --ansi",
         "test": [
             "@test:integration",
             "@test:feature"
