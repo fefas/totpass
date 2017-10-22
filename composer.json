@@ -20,6 +20,15 @@
 
     "minimum-stability": "stable",
 
+    "scripts": {
+        "test": [
+            "@test:integration",
+            "@test:feature"
+        ],
+        "test:integration": "phpunit --color=always",
+        "test:feature": "behat --colors"
+    },
+
     "require": {
         "php": "^7.1",
         "robmorgan/phinx": "^0.9.1",
