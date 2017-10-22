@@ -5,6 +5,12 @@
     "type": "project",
     "license": "MIT",
 
+    "keywords": [
+        "fefas",
+        "one time password",
+        "totp"
+    ],
+
     "authors": [
         {
             "name": "Felipe Martins",
