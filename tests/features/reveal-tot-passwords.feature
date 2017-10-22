@@ -1,8 +1,8 @@
 @reveal
-Feature: List time-based one-time passwords
-  In order to see the registered time-based one-time passwords
+Feature: Reveal time-based one-time passwords
+  In order to see my registered time-based one-time passwords
   As an user
-  I want to list them by typing "totpass list [prefix-filter] [--reveal-secret]"
+  I want to list them by typing "totpass reveal [prefix-filter] [--with-secret]"
 
   Scenario: List when none was registered
     When I run the command "totpass reveal"
