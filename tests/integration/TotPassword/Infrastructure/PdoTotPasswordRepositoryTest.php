@@ -34,8 +34,8 @@ class PdoTotPasswordRepositoryTest extends TestCase
     public function shouldReturnArrayWithAllTotPasswordsWhenFindAllIsCalled()
     {
         $expectedTotPasswords = [
-            new TotPassword('dropbox', 'SECRET', new DateTime('2017-03-14 10:12:34')),
-            new TotPassword('google.fefas', 'SECRET', new DateTime('2016-08-22 22:02:31')),
+            new TotPassword('dropbox', 'SECRET', 30),
+            new TotPassword('google.fefas', 'SECRET', 45),
         ];
         $this->databaseFixture->insertTotPasswords($expectedTotPasswords);
 
@@ -49,11 +49,7 @@ class PdoTotPasswordRepositoryTest extends TestCase
      */
     public function shouldRegisterANewTotPassword()
     {
-        $totPasswordToRegister = new TotPassword(
-            'dropbox',
-            'SECRET',
-            new DateTime('2017-03-14 10:12:34')
-        );
+        $totPasswordToRegister = new TotPassword('dropbox', 'SECRET', 30);
 
         $this->pdoTotPasswordRepository->register($totPasswordToRegister);
 
