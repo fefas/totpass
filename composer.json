@@ -15,6 +15,7 @@
     "minimum-stability": "stable",
 
     "require": {
+        "php": "^7.1",
         "robmorgan/phinx": "^0.9.1",
         "symfony/console": "^3.3"
     },
