@@ -21,12 +21,6 @@ Feature: Reveal time-based one-time passwords
     Then the exit status should be "0"
     And the following output should be seen:
       """
-      +-------------------------------+
-      | Time-Based One-Time Passwords |
-      +-------------------------------+
-      | Name                          |
-      +-------------------------------+
-      | dropbox                       |
-      | google.fefas                  |
-      +-------------------------------+
+       dropbox
+       google.fefas
       """

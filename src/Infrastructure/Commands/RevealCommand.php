@@ -51,10 +51,7 @@ class RevealCommand extends Command
 
         $outputTable = new Table($output);
         $outputTable
-            ->setHeaders([
-                [new TableCell('Time-Based One-Time Passwords', ['colspan' => 1])],
-                ['Name'],
-            ])
+            ->setStyle('compact')
             ->setRows($outputTableRows)
             ->render();
     }
