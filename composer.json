@@ -33,7 +33,8 @@
     "require": {
         "php": "^7.1",
         "robmorgan/phinx": "^0.9.1",
-        "symfony/console": "^3.3"
+        "symfony/console": "^3.3",
+        "spomky-labs/otphp": "^9.0"
     },
 
     "autoload": {
