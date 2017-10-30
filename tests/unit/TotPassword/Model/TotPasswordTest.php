@@ -35,6 +35,6 @@ class TotPasswordTest extends TestCase
             ->with($this->equalTo($expectedSeed))
             ->willReturn($fixedPassword);
 
-       return $totPasswordAlgorithmMock;
+        return $totPasswordAlgorithmMock;
     }
 }
