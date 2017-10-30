@@ -15,7 +15,7 @@ Feature: Reveal time-based one-time passwords
 
   Scenario: List without arguments and options
     Given the following time-based one-time passwords were registered:
-      | TOT Password | Secret | Refresh Period |
+      | TOTP Name    | Secret           | Refresh Period |
       | dropbox      | SECRET | 30             |
       | google.fefas | SECRET | 30             |
     When I run the command "totpass reveal --date-time='2017-11-02 09:10:00'"

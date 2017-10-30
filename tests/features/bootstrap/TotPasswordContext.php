@@ -34,13 +34,13 @@ class TotPasswordContext implements Context
     }
 
     /**
-     * @Transform table:TOT Password,Secret,Refresh Period
+     * @Transform table:TOTP Name,Secret,Refresh Period
      */
     public function transformTotps(TableNode $totPasswordsTable)
     {
         $totPasswords = [];
         foreach ($totPasswordsTable as $totPasswordRow) {
-            $name = $totPasswordRow['TOT Password'];
+            $name = $totPasswordRow['TOTP Name'];
             $secret = $totPasswordRow['Secret'];
             $refreshPeriod = $totPasswordRow['Refresh Period'];
 
