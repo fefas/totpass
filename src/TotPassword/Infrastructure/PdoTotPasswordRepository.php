@@ -27,10 +27,14 @@ class PdoTotPasswordRepository implements TotPasswordRepository
 
         $totPasswords = [];
         foreach ($totPasswordsRows as $totPasswordRow) {
-            $totPasswords[] = new TotPassword(
-                $totPasswordRow['name'],
+            $totPasswordAlgorithm = TotPasswordAlgorithm::create(
                 $totPasswordRow['secret'],
                 $totPasswordRow['refresh_period']
+            );
+
+            $totPasswords[] = new TotPassword(
+                $totPasswordRow['name'],
+                $totPasswordAlgorithm
             );
         }
 

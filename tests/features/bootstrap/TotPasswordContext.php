@@ -3,6 +3,7 @@
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\TableNode;
 use Fefas\TotPass\DatabaseFixture;
+use Fefas\TotPass\TotPassword\Infrastructure\TotPasswordAlgorithm;
 use Fefas\TotPass\TotPassword\Model\TotPassword;
 
 class TotPasswordContext implements Context
@@ -43,7 +44,12 @@ class TotPasswordContext implements Context
             $secret = $totPasswordRow['Secret'];
             $refreshPeriod = $totPasswordRow['Refresh Period'];
 
-            $totPasswords[] = new TotPassword($name, $secret, $refreshPeriod);
+            $totPasswordAlgorithm = TotPasswordAlgorithm::create(
+                $secret,
+                $refreshPeriod
+            );
+
+            $totPasswords[] = new TotPassword($name, $totPasswordAlgorithm);
         }
 
         return $totPasswords;

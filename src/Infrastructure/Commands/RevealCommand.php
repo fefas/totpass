@@ -58,6 +58,7 @@ class RevealCommand extends Command
         foreach ($totPasswords as $totPassword) {
             $outputTableRows[] = [
                 $totPassword->name(),
+                $totPassword->retrieveAt($datetime),
             ];
         }
 

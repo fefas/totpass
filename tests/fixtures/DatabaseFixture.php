@@ -4,6 +4,7 @@ namespace Fefas\TotPass;
 
 use PDO;
 use DateTime;
+use Fefas\TotPass\TotPassword\Infrastructure\TotPasswordAlgorithm;
 use Fefas\TotPass\TotPassword\Model\TotPassword;
 
 class DatabaseFixture
@@ -52,10 +53,11 @@ class DatabaseFixture
         }
         $totPasswordRow = $totPasswordRow[0];
 
-        return new TotPassword(
-            $totPasswordRow['name'],
+        $totPasswordAlgorithm = TotPasswordAlgorithm::create(
             $totPasswordRow['secret'],
             $totPasswordRow['refresh_period']
         );
+
+        return new TotPassword($totPasswordRow['name'], $totPasswordAlgorithm);
     }
 }
