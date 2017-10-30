@@ -38,6 +38,12 @@ class RevealCommand extends Command
                 InputOption::VALUE_REQUIRED,
                 'Considered date time to generate TOT Passwords',
                 self::DEFAULT_OPTION_DATE_TIME
+            )
+            ->addOption(
+                'with-secret',
+                null,
+                InputOption::VALUE_NONE,
+                'Show the secret of the TOT Passwords'
             );
     }
 
@@ -51,15 +57,23 @@ class RevealCommand extends Command
         }
 
         $dateTime = new DateTime($input->getOption('date-time'));
+        $withSecret = $input->getOption('with-secret');
+
         $dateTimeFormatted = $dateTime->format('Y-m-d H:i:s');
         $output->writeln("<comment>Considered date time: $dateTimeFormatted</comment>");
 
         $outputTableRows = [];
         foreach ($totPasswords as $totPassword) {
-            $outputTableRows[] = [
+            $newOutPutTableRow = [
                 $totPassword->name(),
                 $totPassword->retrieveAt($dateTime),
             ];
+
+            if ($withSecret) {
+                $newOutPutTableRow[] = $totPassword->secret();
+            }
+
+            $outputTableRows[] = $newOutPutTableRow;
         }
 
         $outputTable = new Table($output);
