@@ -1,4 +1,6 @@
-# Fast TOTP
+[![Build Status](https://travis-ci.org/fefas/totpass.svg?branch=master)](https://travis-ci.org/fefas/totpass)
+
+# CLI for Time-Base One-Time Password
 
 This project aims to provide a command line interface (CLI) for Time-Based
 One-Time Passwords.
