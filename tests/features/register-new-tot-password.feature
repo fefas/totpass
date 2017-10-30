@@ -42,16 +42,16 @@ Feature: Register new time-based one-time password
       The new TOT password with name 'google.fefas' was successfully registered.
       """
     And the following time-based one-time passwords should be registered:
-      | TOT Password | Secret           | Refresh Period |
+      | TOTP Name    | Secret           | Refresh Period |
       | google.fefas | JDDK4U6G3BJLEZ7Y | 30             |
 
   Scenario: Register providing the refresh period
     When I run the command "totpass register google.fefas JDDK4U6G3BJLEZ7Y --refresh-period 45"
-    #Then the exit status should be "0"
+    Then the exit status should be "0"
     And the following output should be seen:
       """
       The new TOT password with name 'google.fefas' was successfully registered.
       """
     And the following time-based one-time passwords should be registered:
-      | TOT Password | Secret           | Refresh Period |
+      | TOTP Name    | Secret           | Refresh Period |
       | google.fefas | JDDK4U6G3BJLEZ7Y | 45             |

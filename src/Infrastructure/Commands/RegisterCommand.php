@@ -8,6 +8,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Fefas\TotPass\TotPassword\Infrastructure\TotPasswordAlgorithm;
 use Fefas\TotPass\TotPassword\Model\TotPassword;
 use Fefas\TotPass\TotPassword\Model\TotPasswordRepository;
 
@@ -49,11 +50,11 @@ class RegisterCommand extends Command
         $totPasswordSecret = $input->getArgument('secret');
         $totPasswordRefreshPeriod = $input->getOption('refresh-period');
 
-        $totPassword = new TotPassword(
-            $totPasswordName,
+        $totPasswordAlgorithm = TotPasswordAlgorithm::create(
             $totPasswordSecret,
             $totPasswordRefreshPeriod
         );
+        $totPassword = new TotPassword($totPasswordName, $totPasswordAlgorithm);
 
         $this->totPasswordRepository->register($totPassword);
 
