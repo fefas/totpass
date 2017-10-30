@@ -8,5 +8,6 @@ install:
     - composer database:migrate
 
 script:
+    - composer run test:unit
     - composer run test:integration
     - composer run test:feature
