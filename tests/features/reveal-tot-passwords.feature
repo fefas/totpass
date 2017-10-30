@@ -5,7 +5,7 @@ Feature: Reveal time-based one-time passwords
   I want to list them by typing the following command:
     "totpass reveal [prefix-filter] [--with-secret] [--date-time='YYYY-MM-DD HH:mm:ss']"
 
-  Scenario: List when none was registered
+  Scenario: When none was registered
     When I run the command "totpass reveal"
     Then the exit status should be "0"
     And the following output should be seen:
@@ -13,7 +13,7 @@ Feature: Reveal time-based one-time passwords
       Nothing to show..
       """
 
-  Scenario: List without arguments and options
+  Scenario: Basic reveal without extra arguments or options
     Given the following time-based one-time passwords were registered:
       | TOTP Name | Secret           | Refresh Period |
       | dropbox   | JBSWY3DPEHPK3PXP | 30             |
@@ -27,7 +27,7 @@ Feature: Reveal time-based one-time passwords
        google  634423
       """
 
-  Scenario: List showing the secret
+  Scenario: Passing with-secret option that also reveals the secret
     Given the following time-based one-time passwords were registered:
       | TOTP Name | Secret           | Refresh Period |
       | dropbox   | JBSWY3DPEHPK3PXP | 30             |
