@@ -51,6 +51,8 @@ class RevealCommand extends Command
         }
 
         $dateTime = new DateTime($input->getOption('date-time'));
+        $dateTimeFormatted = $dateTime->format('Y-m-d H:i:s');
+        $output->writeln("<comment>Considered date time: $dateTimeFormatted</comment>");
 
         $outputTableRows = [];
         foreach ($totPasswords as $totPassword) {

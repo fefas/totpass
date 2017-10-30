@@ -22,6 +22,7 @@ Feature: Reveal time-based one-time passwords
     Then the exit status should be "0"
     And the following output should be seen:
       """
+      Considered date time: 2017-11-02 09:10:00
        dropbox 462553
        google  634423
       """
