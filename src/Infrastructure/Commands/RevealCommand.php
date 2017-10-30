@@ -35,7 +35,7 @@ class RevealCommand extends Command
             ->addOption(
                 'date-time',
                 null,
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 'Considered date time to generate TOT Passwords',
                 self::DEFAULT_OPTION_DATE_TIME
             );
