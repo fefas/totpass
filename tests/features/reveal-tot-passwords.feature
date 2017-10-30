@@ -22,6 +22,6 @@ Feature: Reveal time-based one-time passwords
     Then the exit status should be "0"
     And the following output should be seen:
       """
-       dropbox 0412462553
-       google  0348634423
+       dropbox 462553
+       google  634423
       """

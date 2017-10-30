@@ -8,7 +8,7 @@ interface TotPasswordAlgorithm
 {
     public const DEFAULT_REFRESH_PERIOD = 30;
     public const DEFAULT_HASH_FUNCTION = 'sha1';
-    public const DEFAULT_DIGITS = 10;
+    public const DEFAULT_DIGITS = 6;
 
     public function generate(int $seed): string;
     public function secret(): string;
