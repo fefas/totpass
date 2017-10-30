@@ -26,6 +26,9 @@ class PdoTotPasswordRepositoryTest extends TestCase
     protected function tearDown()
     {
         $this->databaseFixture->purgeDatabase();
+
+        unset($this->databaseFixture);
+        unset($this->pdoTotPasswordRepository);
     }
 
     /**
