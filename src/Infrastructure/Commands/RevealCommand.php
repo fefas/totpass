@@ -2,6 +2,7 @@
 
 namespace Fefas\TotPass\Infrastructure\Commands;
 
+use DateTime;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -49,16 +50,13 @@ class RevealCommand extends Command
             return;
         }
 
-        $this->renderOutputTable($output, $totPasswords);
-    }
+        $dateTime = new DateTime($input->getOption('date-time'));
 
-    private function renderOutputTable(OutputInterface $output, array $totPasswords)
-    {
         $outputTableRows = [];
         foreach ($totPasswords as $totPassword) {
             $outputTableRows[] = [
                 $totPassword->name(),
-                $totPassword->retrieveAt($datetime),
+                $totPassword->retrieveAt($dateTime),
             ];
         }
 

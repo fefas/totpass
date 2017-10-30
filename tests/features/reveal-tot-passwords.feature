@@ -15,13 +15,13 @@ Feature: Reveal time-based one-time passwords
 
   Scenario: List without arguments and options
     Given the following time-based one-time passwords were registered:
-      | TOTP Name    | Secret           | Refresh Period |
-      | dropbox      | SECRET | 30             |
-      | google.fefas | SECRET | 30             |
+      | TOTP Name | Secret           | Refresh Period |
+      | dropbox   | JBSWY3DPEHPK3PXP | 30             |
+      | google    | JDDK4U6G3BJLEZ7Y | 30             |
     When I run the command "totpass reveal --date-time='2017-11-02 09:10:00'"
     Then the exit status should be "0"
     And the following output should be seen:
       """
-       dropbox
-       google.fefas
+       dropbox 0412462553
+       google  0348634423
       """
