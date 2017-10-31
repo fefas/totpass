@@ -8,4 +8,13 @@
       <directory suffix="Test.php">./tests/unit</directory>
     </testsuite>
   </testsuites>
+
+  <filter>
+    <whitelist>
+      <directory suffix=".php">./src</directory>
+      <exclude>
+        <directory>./src/Infrastructure</directory>
+      </exclude>
+    </whitelist>
+  </filter>
 </phpunit>

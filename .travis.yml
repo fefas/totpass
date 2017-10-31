@@ -9,6 +9,10 @@ install:
 
 script:
     - composer run test:cs
-    - composer run test:unit
-    - composer run test:integration
+    - composer run test:unit -- --coverage-clover clover-unit.xml
+    - composer run test:integration -- --coverage-clover clover-integration.xml
     - composer run test:feature
+
+after_success:
+    - composer require --dev satooshi/php-coveralls
+    - ./vendor/bin/coveralls -v
