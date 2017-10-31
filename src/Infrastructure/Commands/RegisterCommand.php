@@ -40,7 +40,7 @@ class RegisterCommand extends Command
             ->addOption(
                 'refresh-period',
                 null,
-                InputOption::VALUE_OPTIONAL,
+                InputOption::VALUE_REQUIRED,
                 'Password refresh period',
                 self::DEFAULT_REFRESH_PERIOD
             );

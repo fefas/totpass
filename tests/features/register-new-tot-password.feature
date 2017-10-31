@@ -15,7 +15,7 @@ Feature: Register new time-based one-time password
         Not enough arguments (missing: "name, secret").
 
 
-      register [--refresh-period [REFRESH-PERIOD]] [--] <name> <secret>
+      register [--refresh-period REFRESH-PERIOD] [--] <name> <secret>
 
       """
 
@@ -30,7 +30,7 @@ Feature: Register new time-based one-time password
         Not enough arguments (missing: "secret").
 
 
-      register [--refresh-period [REFRESH-PERIOD]] [--] <name> <secret>
+      register [--refresh-period REFRESH-PERIOD] [--] <name> <secret>
 
       """
 
