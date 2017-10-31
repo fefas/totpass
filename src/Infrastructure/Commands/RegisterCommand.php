@@ -14,6 +14,8 @@ use Fefas\TotPass\TotPassword\Model\TotPasswordRepository;
 
 class RegisterCommand extends Command
 {
+    private const DEFAULT_REFRESH_PERIOD = 30;
+
     private $totPasswordRepository;
 
     public function __construct(TotPasswordRepository $totPasswordRepository)
@@ -40,7 +42,7 @@ class RegisterCommand extends Command
                 null,
                 InputOption::VALUE_OPTIONAL,
                 'Password refresh period',
-                30
+                self::DEFAULT_REFRESH_PERIOD
             );
     }
 
