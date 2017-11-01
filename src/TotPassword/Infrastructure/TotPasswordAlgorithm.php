@@ -7,36 +7,36 @@ use Fefas\TotPass\TotPassword\Model\TotPasswordAlgorithm as ModelTotPasswordAlgo
 
 class TotPasswordAlgorithm implements ModelTotPasswordAlgorithm
 {
-    private $thirdTotPasswordAlgorithm;
+    private $vendorTotp;
 
-    public function __construct(TOTP $thirdTotPasswordAlgorithm)
+    public function __construct(TOTP $vendorTotp)
     {
-        $this->thirdTotPasswordAlgorithm = $thirdTotPasswordAlgorithm;
+        $this->vendorTotp = $vendorTotp;
     }
 
     public function generate(int $seed): string
     {
-        return $this->thirdTotPasswordAlgorithm->at($seed);
+        return $this->vendorTotp->at($seed);
     }
 
     public function secret(): string
     {
-        return $this->thirdTotPasswordAlgorithm->getSecret();
+        return $this->vendorTotp->getSecret();
     }
 
     public function refreshPeriod(): int
     {
-        return $this->thirdTotPasswordAlgorithm->getPeriod();
+        return $this->vendorTotp->getPeriod();
     }
 
     public function hashFunction(): string
     {
-        return $this->thirdTotPasswordAlgorithm->getDigest();
+        return $this->vendorTotp->getDigest();
     }
 
     public function digits(): int
     {
-        return $this->thirdTotPasswordAlgorithm->getDigits();
+        return $this->vendorTotp->getDigits();
     }
 
     public static function create(
@@ -57,13 +57,13 @@ class TotPasswordAlgorithm implements ModelTotPasswordAlgorithm
             $digits = ModelTotPasswordAlgorithm::DEFAULT_DIGITS;
         }
 
-        $vendorLibrary = TOTP::create(
+        $vendorTotp = TOTP::create(
             $secret,
             $refreshPeriod,
             $hashFunction,
             $digits
         );
 
-        return new self($vendorLibrary);
+        return new self($vendorTotp);
     }
 }
